@@ -1,0 +1,19 @@
+.chat {
+    display: flex;
+}
+
+/* Channel List */
+.channel {
+    flex: 0 0 200px;
+}
+
+/* Main Chat */
+.main-chat {
+    flex: 1;
+    min-width: 500px;
+}
+
+/* Contact List */
+.contact {
+    flex: 0 0 200px;
+}
