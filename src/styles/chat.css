@@ -3,16 +3,52 @@
 }
 
 /* Channel List */
-.channel {
+.channel-bar {
     flex: 0 0 200px;
-    color: white;
-    padding: 25px;
     background-color: rgb(50, 50, 50);
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-bar .channel-list {
+    flex: 1;
+    overflow-y: hidden;
+}
+
+.channel-bar .channel-list:hover {
     overflow-y: auto;
 }
 
-.channel .channel-list {
-    padding: 25px 0;
+.channel-bar .channel-list .channel {
+    padding: 20px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    margin: 5px 10px;
+}
+
+.channel-bar .channel-list .channel:hover {
+    background-color: grey;
+}
+
+.channel-bar .user-bar {
+    padding: 30px 10px;
+    background-color: rgb(25, 25, 25);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.channel-bar .user-bar > button {
+    color: white;
+    background: none;
+    border: 1px solid white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.channel-bar .user-bar > button:hover {
+    background-color: grey;
 }
 
 /* Main Chat */
@@ -23,12 +59,14 @@
     flex-direction: column;
     background-color: rgb(75, 75, 75);
     color: white;
-    padding: 0 25px;
+    padding: 10px;
 }
 
 .main-chat .chat-messages {
     flex: 1;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .main-chat .chat-messages::-webkit-scrollbar-track {
@@ -37,12 +75,13 @@
 
 .main-chat .messages {
     padding: 25px 0;
+    margin: 0 15px;
 }
 
 .main-chat .chat-input {
     display: flex;
     background-color: rgb(100, 100, 100);
-    margin: 25px 0;
+    margin: 15px;
     padding: 0 25px;
     border-radius: 10px;
     align-items: center;
@@ -66,17 +105,33 @@
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    color: white;
+    background-color: grey;
+}
+
+.main-chat .chat-input button:hover {
+    background-color: rgb(200, 200, 200);
 }
 
 /* Contact List */
-.contact {
+.contact-list {
     flex: 0 0 200px;
-    color: white;
-    padding: 25px;
     background-color: rgb(50, 50, 50);
+    overflow-y: hidden;
+}
+
+.contact-list:hover {
     overflow-y: auto;
 }
 
-.contact .contact-list {
-    padding: 25px 0;
+.contact-list .contact {
+    padding: 20px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    margin: 5px 10px;
+}
+
+.contact-list .contact:hover {
+    background-color: grey;
 }

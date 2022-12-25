@@ -8,15 +8,20 @@ const ChannelList = () => {
     }, []);
 
     return (
-        <div className="channel">
-            <div>Channels</div>
-            {temp.map((item, index) => {
-                return (
-                    <div className="channel-list" key={index}>
-                        {item.name}
-                    </div>
-                );
-            })}
+        <div className="channel-bar">
+            <div className="channel-list">
+                {temp.map((item, index) => {
+                    return (
+                        <div className="channel" key={index}>
+                            {item.name}
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="user-bar">
+                <div>User</div>
+                <button>Logout</button>
+            </div>
         </div>
     );
 };

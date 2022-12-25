@@ -8,11 +8,10 @@ const ContactList = () => {
     }, []);
 
     return (
-        <div className="contact">
-            <div>Contacts</div>
+        <div className="contact-list">
             {temp.map((item, index) => {
                 return (
-                    <div className="contact-list" key={index}>
+                    <div className="contact" key={index}>
                         {item.name}
                     </div>
                 );
