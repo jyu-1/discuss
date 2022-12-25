@@ -4,7 +4,7 @@
 
 /* Channel List */
 .channel-bar {
-    flex: 0 0 200px;
+    flex: 0 0 250px;
     background-color: rgb(50, 50, 50);
     display: flex;
     flex-direction: column;
@@ -115,7 +115,7 @@
 
 /* Contact List */
 .contact-list {
-    flex: 0 0 200px;
+    flex: 0 0 250px;
     background-color: rgb(50, 50, 50);
     overflow-y: hidden;
 }

@@ -13,7 +13,7 @@ const ChannelList = () => {
                 {temp.map((item, index) => {
                     return (
                         <div className="channel" key={index}>
-                            {item.name}
+                            #{item.name}
                         </div>
                     );
                 })}
