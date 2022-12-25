@@ -8,11 +8,12 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: grey;
+    background-color: rgb(50, 50, 50);
 }
 
 .main > div {
     flex: 1;
+    overflow-y: hidden;
 }
 
 header,
@@ -25,4 +26,21 @@ footer {
 footer a {
     color: white;
     text-decoration: none;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(50, 50, 50);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

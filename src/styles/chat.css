@@ -5,15 +5,78 @@
 /* Channel List */
 .channel {
     flex: 0 0 200px;
+    color: white;
+    padding: 25px;
+    background-color: rgb(50, 50, 50);
+    overflow-y: auto;
+}
+
+.channel .channel-list {
+    padding: 25px 0;
 }
 
 /* Main Chat */
 .main-chat {
     flex: 1;
     min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(75, 75, 75);
+    color: white;
+    padding: 0 25px;
+}
+
+.main-chat .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.main-chat .chat-messages::-webkit-scrollbar-track {
+    background-color: rgb(75, 75, 75);
+}
+
+.main-chat .messages {
+    padding: 25px 0;
+}
+
+.main-chat .chat-input {
+    display: flex;
+    background-color: rgb(100, 100, 100);
+    margin: 25px 0;
+    padding: 0 25px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.main-chat .chat-input > input {
+    flex: 1;
+    background: none;
+    border: none;
+    height: 75px;
+    color: white;
+}
+
+.main-chat .chat-input > input:focus {
+    outline: none;
+}
+
+.main-chat .chat-input button {
+    height: 40px;
+    width: 75px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 /* Contact List */
 .contact {
     flex: 0 0 200px;
+    color: white;
+    padding: 25px;
+    background-color: rgb(50, 50, 50);
+    overflow-y: auto;
+}
+
+.contact .contact-list {
+    padding: 25px 0;
 }
