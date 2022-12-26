@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
 import "../styles/login.css";
 
-const Login = () => {
+const Login = (props) => {
     const [account, setAccount] = useState(true);
 
     return (
@@ -11,7 +11,10 @@ const Login = () => {
             {account ? (
                 <LoginForm setAccount={setAccount} />
             ) : (
-                <RegisterForm setAccount={setAccount} />
+                <RegisterForm
+                    setAccount={setAccount}
+                    setNewUser={props.setNewUser}
+                />
             )}
         </div>
     );

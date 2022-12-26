@@ -13,10 +13,15 @@ const RegisterForm = (props) => {
             .then((userCredential) => {
                 updateProfile(auth.currentUser, {
                     displayName: event.target.username.value,
-                    photoURL: "https://example.com/jane-q-user/profile.jpg",
+                    photoURL:
+                        "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
+                }).then(() => {
+                    props.setNewUser({
+                        displayName: event.target.username.value,
+                        photoURL:
+                            "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
+                    });
                 });
-                const user = userCredential.user;
-                console.log(user);
             })
             .catch((error) => {
                 console.log(error.message);

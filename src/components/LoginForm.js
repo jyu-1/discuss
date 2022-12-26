@@ -10,8 +10,7 @@ const LoginForm = (props) => {
             event.target.password.value
         )
             .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
+                console.log("Sign-in Success");
             })
             .catch((error) => {
                 console.log(error.message);

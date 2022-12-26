@@ -32,11 +32,30 @@
 }
 
 .channel-bar .user-bar {
-    padding: 30px 10px;
+    padding: 10px;
     background-color: rgb(25, 25, 25);
     color: white;
+}
+
+.channel-bar .user-bar-info {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.channel-bar .user-bar img {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+}
+
+.user-bar .user-bar-name {
+    font-size: 1.5rem;
+}
+
+.user-bar .user-bar-email {
+    font-size: 0.75rem;
 }
 
 .channel-bar .user-bar > button {
@@ -45,6 +64,7 @@
     border: 1px solid white;
     padding: 5px;
     cursor: pointer;
+    width: 100%;
 }
 
 .channel-bar .user-bar > button:hover {
