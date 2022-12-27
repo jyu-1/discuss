@@ -1,18 +1,34 @@
 import { useEffect, useState } from "react";
-import ContactData from "../test-data/ContactData";
+import { database } from "../firebase";
+import { ref, push, set, serverTimestamp, onValue } from "firebase/database";
 
 const ContactList = () => {
-    const [temp, setTemp] = useState([]);
+    const [contact, setContact] = useState([]);
+
     useEffect(() => {
-        setTemp(ContactData);
+        const unsubscribe = onValue(ref(database, "user"), (snapshot) => {
+            const temp = [];
+            snapshot.forEach((childSnapshot) => {
+                const tempObject = {
+                    ...childSnapshot.val(),
+                    id: childSnapshot.key,
+                };
+                temp.push(tempObject);
+            });
+            setContact(temp);
+        });
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
 
     return (
         <div className="contact-list">
-            {temp.map((item, index) => {
+            {contact.map((item) => {
                 return (
-                    <div className="contact" key={index}>
-                        {item.name}
+                    <div className="contact" key={item.id}>
+                        {item.displayName}
                     </div>
                 );
             })}

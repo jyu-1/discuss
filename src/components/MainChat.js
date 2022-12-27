@@ -1,30 +1,86 @@
 import { useEffect, useState } from "react";
-import ChatData from "../test-data/ChatData";
+import { database, auth } from "../firebase";
+import {
+    ref,
+    push,
+    set,
+    serverTimestamp,
+    onValue,
+    orderByChild,
+    query,
+    limitToLast,
+} from "firebase/database";
 
 const MainChat = () => {
-    const [temp, setTemp] = useState([]);
+    const [messages, setMessages] = useState([]);
+
+    const sendMessage = async (event) => {
+        event.preventDefault();
+
+        set(push(ref(database, "chat/randomChannelId")), {
+            createdBy: auth.currentUser.uid,
+            message: event.target.message.value,
+            createdAt: serverTimestamp(),
+        });
+
+        event.target.reset();
+    };
+
     useEffect(() => {
-        setTemp(ChatData);
+        const unsubscribe = onValue(
+            query(
+                ref(database, "chat/randomChannelId"),
+                orderByChild("createdAt"),
+                limitToLast(5)
+            ),
+            (snapshot) => {
+                const temp = [];
+                snapshot.forEach((childSnapshot) => {
+                    const tempObject = {
+                        ...childSnapshot.val(),
+                        id: childSnapshot.key,
+                    };
+                    temp.push(tempObject);
+                });
+                temp.reverse();
+                setMessages(temp);
+            }
+        );
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
 
     return (
         <div className="main-chat">
             <div className="chat-messages">
-                {temp.map((item, index) => {
-                    return (
-                        <div className="messages" key={index}>
-                            <div>
-                                {item.name} - {item.time}
+                {messages &&
+                    messages.map((item) => {
+                        return (
+                            <div className="messages" key={item.id}>
+                                <div>
+                                    {item.createdBy} -{" "}
+                                    {new Date(item.createdAt)
+                                        .toISOString()
+                                        .slice(0, 19)}
+                                </div>
+                                <div>{item.message}</div>
                             </div>
-                            <div>{item.message}</div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
             </div>
-            <div className="chat-input">
-                <input />
-                <button>Send</button>
-            </div>
+            <form className="chat-input" onSubmit={sendMessage}>
+                <input
+                    type="text"
+                    placeholder="Messages"
+                    name="message"
+                    required
+                    minLength={1}
+                    maxLength={100}
+                />
+                <button type="submit">Send</button>
+            </form>
         </div>
     );
 };

@@ -1,6 +1,6 @@
-import { auth } from "../firebase";
-import { updateProfile } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { ref, push, set } from "firebase/database";
+import { database, auth } from "../firebase";
 
 const RegisterForm = (props) => {
     const register = async (event) => {
@@ -11,16 +11,11 @@ const RegisterForm = (props) => {
             event.target.password.value
         )
             .then((userCredential) => {
-                updateProfile(auth.currentUser, {
+                set(push(ref(database, "user")), {
                     displayName: event.target.username.value,
                     photoURL:
                         "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
-                }).then(() => {
-                    props.setNewUser({
-                        displayName: event.target.username.value,
-                        photoURL:
-                            "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
-                    });
+                    uid: userCredential.user.uid,
                 });
             })
             .catch((error) => {
