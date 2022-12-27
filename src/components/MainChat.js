@@ -10,6 +10,7 @@ import {
     query,
     limitToLast,
 } from "firebase/database";
+import ChatMessage from "./ChatMessage";
 
 const MainChat = () => {
     const [messages, setMessages] = useState([]);
@@ -57,17 +58,7 @@ const MainChat = () => {
             <div className="chat-messages">
                 {messages &&
                     messages.map((item) => {
-                        return (
-                            <div className="messages" key={item.id}>
-                                <div>
-                                    {item.createdBy} -{" "}
-                                    {new Date(item.createdAt)
-                                        .toISOString()
-                                        .slice(0, 19)}
-                                </div>
-                                <div>{item.message}</div>
-                            </div>
-                        );
+                        return <ChatMessage item={item} key={item.id} />;
                     })}
             </div>
             <form className="chat-input" onSubmit={sendMessage}>

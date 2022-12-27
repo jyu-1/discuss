@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { database } from "../firebase";
-import { ref, push, set, serverTimestamp, onValue } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 
 const ContactList = () => {
     const [contact, setContact] = useState([]);
@@ -28,6 +28,7 @@ const ContactList = () => {
             {contact.map((item) => {
                 return (
                     <div className="contact" key={item.id}>
+                        <img src={item.photoURL} alt="pfp" width={50} />
                         {item.displayName}
                     </div>
                 );

@@ -11,10 +11,7 @@ const Login = (props) => {
             {account ? (
                 <LoginForm setAccount={setAccount} />
             ) : (
-                <RegisterForm
-                    setAccount={setAccount}
-                    setNewUser={props.setNewUser}
-                />
+                <RegisterForm setAccount={setAccount} />
             )}
         </div>
     );

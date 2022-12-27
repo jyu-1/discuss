@@ -8,7 +8,6 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const Main = () => {
     const [user, setUser] = useState(null);
-    const [newUser, setNewUser] = useState({});
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (userInfo) => {
@@ -28,11 +27,7 @@ const Main = () => {
     return (
         <div className="main">
             <Header />
-            {user ? (
-                <Chat newUser={newUser} />
-            ) : (
-                <Login setNewUser={setNewUser} />
-            )}
+            {user ? <Chat /> : <Login />}
             <Footer />
         </div>
     );

@@ -3,10 +3,10 @@ import MainChat from "../components/MainChat";
 import ContactList from "../components/ContactList";
 import "../styles/chat.css";
 
-const Chat = (props) => {
+const Chat = () => {
     return (
         <div className="chat">
-            <ChannelList newUser={props.newUser} />
+            <ChannelList />
             <MainChat />
             <ContactList />
         </div>

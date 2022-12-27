@@ -13,14 +13,17 @@ const ChannelList = (props) => {
     const [channelList, setChannelList] = useState([]);
 
     useEffect(() => {
-        const user = auth.currentUser;
-        if (user !== null) {
-            setUserInfo({
-                displayName: user.displayName,
-                photoURL: user.photoURL,
-                email: user.email,
-            });
-        }
+        const userID = auth.currentUser.uid;
+        const unsubscribe = onValue(
+            ref(database, "user/" + userID),
+            (snapshot) => {
+                setUserInfo({ ...snapshot.val(), uid: snapshot.key });
+            }
+        );
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
 
     useEffect(() => {
@@ -102,7 +105,9 @@ const ChannelList = (props) => {
                                 ? props.newUser.displayName
                                 : userInfo.displayName}
                         </div>
-                        <div className="user-bar-email">{userInfo.email}</div>
+                        <div className="user-bar-email">
+                            {auth.currentUser.email}
+                        </div>
                     </div>
                 </div>
                 <button onClick={logOff}>Logout</button>
