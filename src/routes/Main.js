@@ -1,22 +1,17 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
-import Login from "./Login";
-import Chat from "./Chat";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Login from "./Login";
+import Chat from "./Chat";
 
 const Main = () => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (userInfo) => {
-            if (userInfo) {
-                setUser(userInfo);
-                console.log(userInfo);
-            } else {
-                setUser(userInfo);
-            }
+            setUser(userInfo);
         });
 
         return () => {

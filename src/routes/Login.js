@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
 import "../styles/login.css";
 
-const Login = (props) => {
+const Login = () => {
     const [account, setAccount] = useState(true);
 
     return (

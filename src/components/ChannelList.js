@@ -3,11 +3,11 @@ import { signOut } from "firebase/auth";
 import { database, auth } from "../firebase";
 import { ref, push, set, serverTimestamp, onValue } from "firebase/database";
 
-const ChannelList = (props) => {
+const ChannelList = () => {
     const [userInfo, setUserInfo] = useState({
         displayName: "",
         photoURL: "",
-        email: "",
+        uid: "",
     });
 
     const [channelList, setChannelList] = useState([]);
@@ -91,19 +91,10 @@ const ChannelList = (props) => {
             </div>
             <div className="user-bar">
                 <div className="user-bar-info">
-                    <img
-                        src={
-                            userInfo.photoURL === null
-                                ? props.newUser.photoURL
-                                : userInfo.photoURL
-                        }
-                        alt="pfp"
-                    />
+                    <img src={userInfo.photoURL} alt="pfp" />
                     <div>
                         <div className="user-bar-name">
-                            {userInfo.displayName === null
-                                ? props.newUser.displayName
-                                : userInfo.displayName}
+                            {userInfo.displayName}
                         </div>
                         <div className="user-bar-email">
                             {auth.currentUser.email}
