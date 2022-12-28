@@ -28,7 +28,7 @@ const ContactList = () => {
             {contact.map((item) => {
                 return (
                     <div className="contact" key={item.id}>
-                        <img src={item.photoURL} alt="pfp" width={50} />
+                        <img src={item.photoURL} alt="pfp" />
                         {item.displayName}
                     </div>
                 );

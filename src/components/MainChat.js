@@ -69,7 +69,7 @@ const MainChat = () => {
                     name="message"
                     required
                     minLength={1}
-                    maxLength={100}
+                    maxLength={200}
                 />
                 <button type="submit">Send</button>
             </form>

@@ -25,12 +25,18 @@ const ChatMessage = (props) => {
 
     return (
         <div className="messages">
-            <img src={user.photoURL} alt="pfp" width={50} />
+            <img src={user.photoURL} alt="pfp" />
             <div>
-                {user.displayName} -{" "}
-                {new Date(props.item.createdAt).toISOString().slice(0, 19)}
+                <div className="message-date-separate">
+                    <span className="message-username">{user.displayName}</span>
+                    <span className="message-date">
+                        {new Date(props.item.createdAt)
+                            .toISOString()
+                            .slice(0, 19)}
+                    </span>
+                </div>
+                <div className="message-message">{props.item.message}</div>
             </div>
-            <div>{props.item.message}</div>
         </div>
     );
 };

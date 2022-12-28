@@ -3,6 +3,40 @@
 }
 
 /* Channel List */
+.create-channel {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.create-channel input {
+    height: 40px;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #646464;
+    border-radius: 5px;
+}
+
+.create-channel input:focus {
+    outline: none;
+}
+
+.create-channel button {
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    background-color: #5865f2;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.create-channel button:hover {
+    background-color: #4553ee;
+}
+
 .channel-bar {
     flex: 0 0 250px;
     background-color: rgb(50, 50, 50);
@@ -19,16 +53,24 @@
     overflow-y: auto;
 }
 
-.channel-bar .channel-list .channel {
-    padding: 20px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: white;
+.channel-bar .channel-list .channel a {
+    text-decoration: none;
+    display: block;
+    padding: 20px;
     margin: 5px 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    color: rgb(200, 200, 200);
+    cursor: pointer;
 }
 
-.channel-bar .channel-list .channel:hover {
+.channel-bar .channel-list .channel a:hover {
     background-color: grey;
+}
+
+.channel-bar .channel-list .channel a.active {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 .channel-bar .user-bar {
@@ -47,7 +89,6 @@
 .channel-bar .user-bar img {
     height: 50px;
     width: 50px;
-    background-color: white;
 }
 
 .user-bar .user-bar-name {
@@ -96,6 +137,37 @@
 .main-chat .messages {
     padding: 25px 0;
     margin: 0 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.main-chat .messages > div {
+    margin-top: 10px;
+}
+
+.main-chat .messages .message-date-separate {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-chat .messages img {
+    height: 75px;
+    width: 75px;
+}
+
+.main-chat .messages .message-username {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.main-chat .messages .message-date {
+    color: rgb(200, 200, 200);
+}
+
+.main-chat .messages .message-message {
+    margin-top: 10px;
+    color: rgb(225, 225, 225);
 }
 
 .main-chat .chat-input {
@@ -150,8 +222,17 @@
     border-radius: 5px;
     color: white;
     margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
 }
 
 .contact-list .contact:hover {
     background-color: grey;
+}
+
+.contact-list .contact img {
+    height: 50px;
+    width: 50px;
 }

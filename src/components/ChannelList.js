@@ -70,14 +70,14 @@ const ChannelList = () => {
 
     return (
         <div className="channel-bar">
-            <form onSubmit={createChannel}>
+            <form className="create-channel" onSubmit={createChannel}>
                 <input
                     type="text"
                     placeholder="Channel"
                     name="channel"
                     required
                     minLength={1}
-                    maxLength={10}
+                    maxLength={15}
                 />
                 <button type="submit">Create Channel</button>
             </form>
@@ -85,8 +85,13 @@ const ChannelList = () => {
                 {channelList.map((item) => {
                     return (
                         <div className="channel" key={item.id}>
-                            <NavLink to={`/chat/${item.id}`}>
-                                #{item.channelName}
+                            <NavLink
+                                to={`/chat/${item.id}`}
+                                className={({ isActive }) =>
+                                    isActive ? "active" : ""
+                                }
+                            >
+                                # {item.channelName}
                             </NavLink>
                         </div>
                     );
