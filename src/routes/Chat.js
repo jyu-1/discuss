@@ -1,13 +1,13 @@
 import ChannelList from "../components/ChannelList";
-import MainChat from "../components/MainChat";
 import ContactList from "../components/ContactList";
 import "../styles/chat.css";
+import { Outlet } from "react-router-dom";
 
 const Chat = () => {
     return (
         <div className="chat">
             <ChannelList />
-            <MainChat />
+            <Outlet />
             <ContactList />
         </div>
     );

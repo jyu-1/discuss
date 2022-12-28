@@ -32,7 +32,7 @@ const MainChat = () => {
             query(
                 ref(database, "chat/randomChannelId"),
                 orderByChild("createdAt"),
-                limitToLast(5)
+                limitToLast(10)
             ),
             (snapshot) => {
                 const temp = [];
@@ -56,10 +56,9 @@ const MainChat = () => {
     return (
         <div className="main-chat">
             <div className="chat-messages">
-                {messages &&
-                    messages.map((item) => {
-                        return <ChatMessage item={item} key={item.id} />;
-                    })}
+                {messages.map((item) => {
+                    return <ChatMessage item={item} key={item.id} />;
+                })}
             </div>
             <form className="chat-input" onSubmit={sendMessage}>
                 <input

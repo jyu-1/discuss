@@ -1,14 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Main from "./routes/Main";
+import MainLayout from "./routes/MainLayout";
 import ErrorPage from "./routes/ErrorPage";
 import Login from "./routes/Login";
 import Chat from "./routes/Chat";
+import Welcome from "./components/Welcome";
+import MainChat from "./components/MainChat";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 const router = createBrowserRouter(
     [
         {
             path: "/",
-            element: <Main />,
+            element: <MainLayout />,
             errorElement: <ErrorPage />,
             children: [
                 {
@@ -16,8 +19,27 @@ const router = createBrowserRouter(
                     element: <Login />,
                 },
                 {
+                    path: "login",
+                    element: <Login />,
+                },
+                {
                     path: "chat",
-                    element: <Chat />,
+                    element: <PrivateRoutes />,
+                    children: [
+                        {
+                            element: <Chat />,
+                            children: [
+                                {
+                                    index: true,
+                                    element: <Welcome />,
+                                },
+                                {
+                                    path: ":channelId",
+                                    element: <MainChat />,
+                                },
+                            ],
+                        },
+                    ],
                 },
             ],
         },

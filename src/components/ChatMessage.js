@@ -6,17 +6,21 @@ const ChatMessage = (props) => {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        get(child(ref(database), "user/" + props.item.createdBy))
-            .then((snapshot) => {
-                if (snapshot.exists()) {
-                    setUser(snapshot.val());
-                } else {
-                    console.log("No data available");
-                }
-            })
-            .catch((error) => {
-                console.error(error.message);
-            });
+        const getProfile = async () => {
+            await get(child(ref(database), "user/" + props.item.createdBy))
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        setUser(snapshot.val());
+                    } else {
+                        console.log("No data available");
+                    }
+                })
+                .catch((error) => {
+                    console.error(error.message);
+                });
+        };
+
+        getProfile();
     }, [props.item.createdBy]);
 
     return (
