@@ -11,14 +11,16 @@ import {
     limitToLast,
 } from "firebase/database";
 import ChatMessage from "./ChatMessage";
+import { useParams } from "react-router-dom";
 
 const MainChat = () => {
     const [messages, setMessages] = useState([]);
+    const { channelId } = useParams();
 
     const sendMessage = async (event) => {
         event.preventDefault();
 
-        set(push(ref(database, "chat/randomChannelId")), {
+        set(push(ref(database, `chat/${channelId}`)), {
             createdBy: auth.currentUser.uid,
             message: event.target.message.value,
             createdAt: serverTimestamp(),
@@ -30,7 +32,7 @@ const MainChat = () => {
     useEffect(() => {
         const unsubscribe = onValue(
             query(
-                ref(database, "chat/randomChannelId"),
+                ref(database, `chat/${channelId}`),
                 orderByChild("createdAt"),
                 limitToLast(10)
             ),
@@ -51,7 +53,7 @@ const MainChat = () => {
         return () => {
             unsubscribe();
         };
-    }, []);
+    }, [channelId]);
 
     return (
         <div className="main-chat">

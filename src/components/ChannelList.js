@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { database, auth } from "../firebase";
 import { ref, push, set, serverTimestamp, onValue } from "firebase/database";
@@ -84,7 +85,9 @@ const ChannelList = () => {
                 {channelList.map((item) => {
                     return (
                         <div className="channel" key={item.id}>
-                            #{item.channelName}
+                            <NavLink to={`/chat/${item.id}`}>
+                                #{item.channelName}
+                            </NavLink>
                         </div>
                     );
                 })}
