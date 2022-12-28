@@ -6,10 +6,82 @@
 }
 
 .login-form {
-    background-color: lightblue;
+    background-color: rgb(75, 75, 75);
     padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.login-form > div:first-child {
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+}
+
+.login-form > div:nth-child(2) {
+    font-size: 1rem;
+    color: rgb(225, 225, 225);
+}
+
+.login-form input {
+    width: 400px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: rgb(50, 50, 50);
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.login-form input:focus {
+    outline: none;
+}
+
+.login-form label {
+    color: rgb(225, 225, 225);
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.login-form .login-buttons {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.login-form .login-buttons button:first-child {
+    flex: 1;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    background-color: #5865f2;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-form .login-buttons button:first-child:hover {
+    background-color: #4553ee;
+}
+
+.login-form .login-buttons button:nth-child(2) {
+    flex: 1;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    background-color: #f27758;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-form .login-buttons button:nth-child(2):hover {
+    background-color: #ec5934;
 }

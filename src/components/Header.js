@@ -1,5 +1,5 @@
 const Header = () => {
-    return <header>DISCUSS!</header>;
+    return <header>Discuss!</header>;
 };
 
 export default Header;

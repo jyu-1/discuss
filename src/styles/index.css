@@ -4,11 +4,20 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url(../assets/wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+}
+
 .main {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: rgb(50, 50, 50);
 }
 
 .main > div {
@@ -21,6 +30,12 @@ footer {
     text-align: center;
     background-color: black;
     color: white;
+}
+
+header {
+    font-weight: 700;
+    font-family: cursive;
+    font-size: 1.5rem;
 }
 
 footer a {

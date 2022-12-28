@@ -24,35 +24,41 @@ const RegisterForm = (props) => {
 
     return (
         <form className="login-form" onSubmit={register}>
-            <div>Register</div>
-            <div>Email Address</div>
-            <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                required
-                minLength={4}
-            />
-            <div>Username</div>
-            <input
-                type="text"
-                placeholder="Username"
-                name="username"
-                required
-                minLength={3}
-                maxLength={15}
-            />
-            <div>Password</div>
-            <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                required
-                minLength={6}
-            />
+            <div>Create an Account!</div>
+            <div>Join us Today!</div>
             <div>
+                <label>EMAIL ADDRESS</label>
+                <div>
+                    <input type="email" name="email" required minLength={4} />
+                </div>
+            </div>
+            <div>
+                <label>USERNAME</label>
+                <div>
+                    <input
+                        type="text"
+                        name="username"
+                        required
+                        minLength={3}
+                        maxLength={15}
+                    />
+                </div>
+            </div>
+            <div>
+                <label>PASSWORD</label>
+                <div>
+                    <input
+                        type="password"
+                        name="password"
+                        required
+                        minLength={6}
+                    />
+                </div>
+            </div>
+            <div className="login-buttons">
                 <button type="submit">Register</button>
                 <button
+                    type="button"
                     onClick={(event) => {
                         event.preventDefault();
                         props.setAccount(true);
