@@ -52,7 +52,7 @@ const ChannelList = () => {
         event.preventDefault();
         set(push(ref(database, "channel-list")), {
             createdBy: auth.currentUser.uid,
-            channelName: event.target.channel.value,
+            channelName: event.target.channel.value.toLowerCase(),
             createdAt: serverTimestamp(),
         });
         event.target.reset();

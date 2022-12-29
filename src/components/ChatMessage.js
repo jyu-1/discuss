@@ -30,9 +30,7 @@ const ChatMessage = (props) => {
                 <div className="message-date-separate">
                     <span className="message-username">{user.displayName}</span>
                     <span className="message-date">
-                        {new Date(props.item.createdAt)
-                            .toISOString()
-                            .slice(0, 19)}
+                        {new Date(props.item.createdAt).toString().slice(4, 21)}
                     </span>
                 </div>
                 <div className="message-message">{props.item.message}</div>
