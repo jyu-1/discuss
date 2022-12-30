@@ -24,6 +24,8 @@ const LoginForm = (props) => {
                     setAlert("Password is Incorrect");
                 } else if (error.code === "auth/invalid-email") {
                     setAlert("Invalid Email");
+                } else if (error.code === "auth/too-many-requests") {
+                    setAlert("Too many fail attempts. Try again later");
                 } else {
                     setAlert("Unknown Error");
                 }
