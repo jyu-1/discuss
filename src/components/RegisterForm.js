@@ -1,8 +1,11 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { database, auth } from "../firebase";
+import { useState, useEffect } from "react";
 
 const RegisterForm = (props) => {
+    const [alert, setAlert] = useState("");
+
     const register = async (event) => {
         event.preventDefault();
         await createUserWithEmailAndPassword(
@@ -18,9 +21,29 @@ const RegisterForm = (props) => {
                 });
             })
             .catch((error) => {
-                console.log(error.message);
+                if (error.code === "auth/email-already-in-use") {
+                    setAlert("Account Already Exist");
+                } else if (error.code === "auth/invalid-email") {
+                    setAlert("Invalid Email");
+                } else if (error.code === "auth/weak-password") {
+                    setAlert("Password is too Weak");
+                } else if (error.code === "auth/operation-not-allowed") {
+                    setAlert("Operation not Allowed");
+                } else {
+                    setAlert("Unknown Error");
+                }
             });
     };
+
+    useEffect(() => {
+        const clearMessage = setTimeout(() => {
+            setAlert("");
+        }, 3000);
+
+        return () => {
+            clearTimeout(clearMessage);
+        };
+    }, [alert]);
 
     return (
         <form className="login-form" onSubmit={register}>
@@ -67,6 +90,7 @@ const RegisterForm = (props) => {
                     Cancel
                 </button>
             </div>
+            <div className="alert-modal">{alert}</div>
         </form>
     );
 };

@@ -61,7 +61,7 @@ const ChannelList = () => {
     const logOff = async () => {
         await signOut(auth)
             .then(() => {
-                console.log("Sign Out Success");
+                console.log("Logout Success");
             })
             .catch((error) => {
                 console.log(error.message);
