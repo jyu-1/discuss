@@ -81,7 +81,7 @@ const ChannelList = () => {
     return (
         <>
             <div className="channel-close-button" onClick={menuHandler}>
-                Channel List
+                Channels
             </div>
             <div className="channel-bar" data-visible="false" ref={navRef}>
                 <form className="create-channel" onSubmit={createChannel}>

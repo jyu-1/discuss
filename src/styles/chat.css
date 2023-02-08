@@ -50,9 +50,10 @@
 
 @media screen and (max-width: 1000px) {
     .channel-bar {
-        position: fixed;
+        position: absolute;
         top: 0;
-        height: 100vh;
+        left: 0;
+        bottom: 0;
         transform: translateX(-100%);
         transition: transform 0.4s ease-out;
         padding-top: 50px;
@@ -64,7 +65,7 @@
 
     .channel-close-button {
         display: block;
-        position: fixed;
+        position: absolute;
         top: 10px;
         left: 10px;
         z-index: 10;
