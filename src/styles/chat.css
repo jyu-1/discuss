@@ -44,6 +44,44 @@
     flex-direction: column;
 }
 
+.channel-close-button {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .channel-bar {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease-out;
+        padding-top: 50px;
+    }
+
+    .channel-bar[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .channel-close-button {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        background-color: #646464;
+        padding: 10px;
+        border-radius: 5px;
+        color: rgb(200, 200, 200);
+        border: 1px solid rgb(50, 50, 50);
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .channel-close-button:hover {
+        background-color: grey;
+    }
+}
+
 .channel-bar .channel-list {
     flex: 1;
     overflow-y: hidden;
@@ -89,6 +127,7 @@
 .channel-bar .user-bar img {
     height: 50px;
     width: 50px;
+    border-radius: 50%;
 }
 
 .user-bar .user-bar-name {
@@ -172,9 +211,22 @@
     gap: 25px;
 }
 
+@media screen and (max-width: 500px) {
+    .main-chat {
+        min-width: 300px;
+    }
+
+    .main-chat .messages .message-date-separate {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+}
+
 .main-chat .messages img {
     height: 75px;
     width: 75px;
+    border-radius: 50%;
 }
 
 .main-chat .messages .message-username {
@@ -233,6 +285,12 @@
     overflow-y: hidden;
 }
 
+@media screen and (max-width: 1000px) {
+    .contact-list {
+        display: none;
+    }
+}
+
 .contact-list:hover {
     overflow-y: auto;
 }
@@ -256,4 +314,5 @@
 .contact-list .contact img {
     height: 50px;
     width: 50px;
+    border-radius: 50%;
 }

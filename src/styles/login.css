@@ -85,3 +85,14 @@
 .login-form .login-buttons button:nth-child(2):hover {
     background-color: #ec5934;
 }
+
+@media screen and (max-width: 555px) {
+    .login-form {
+        padding: 25px;
+        gap: 15px;
+    }
+
+    .login-form input {
+        width: 100%;
+    }
+}
